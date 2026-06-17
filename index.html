@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raphaël Tankeu Buguieu — Data Scientist & AI Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0A0F1E;
+    --navy: #0F2444;
+    --blue: #1D4ED8;
+    --electric: #3B82F6;
+    --glow: #60A5FA;
+    --slate: #64748B;
+    --muted: #94A3B8;
+    --surface: #F8FAFC;
+    --card: #FFFFFF;
+    --border: #E2E8F0;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--ink);
+    color: #E2E8F0;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(10, 15, 30, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--electric);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--glow); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(29, 78, 216, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content { max-width: 1100px; margin: 0 auto; width: 100%; }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--glow);
+    letter-spacing: 0.04em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #22C55E;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #F1F5F9;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--electric), var(--glow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .stat-item { display: flex; flex-direction: column; }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--electric);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 0.3rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--blue);
+    color: white;
+    padding: 0.85rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+  }
+  .btn-primary:hover {
+    background: var(--electric);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--glow);
+    padding: 0.85rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover {
+    border-color: var(--electric);
+    background: rgba(59, 130, 246, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .hero-langs {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .lang-badge {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+    font-weight: 500;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 4rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--electric);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: #F1F5F9;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .section-desc {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: rgba(255,255,255,0.02); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-text p {
+    color: #CBD5E1;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .about-text p strong { color: #F1F5F9; font-weight: 600; }
+
+  .about-skills { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  .skill-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #CBD5E1;
+  }
+
+  .skill-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--glow));
+    border-radius: 100px;
+    transition: width 1s ease;
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: var(--ink); }
+
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+  }
+
+  .timeline-item:last-child { border-bottom: none; }
+
+  .timeline-left { padding-top: 0.2rem; }
+
+  .timeline-date {
+    font-size: 0.8rem;
+    color: var(--electric);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-company {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .timeline-type {
+    display: inline-block;
+    font-size: 0.7rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    color: var(--glow);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.4rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  .timeline-right {}
+
+  .timeline-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #F1F5F9;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-context {
+    font-size: 0.85rem;
+    color: var(--slate);
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .timeline-bullets li {
+    font-size: 0.9rem;
+    color: #94A3B8;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .timeline-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--electric);
+    font-size: 0.7rem;
+    top: 0.25rem;
+  }
+
+  /* ── PROJECTS ── */
+  .projects { background: rgba(255,255,255,0.02); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.8rem;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--glow));
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .project-card:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    background: rgba(59, 130, 246, 0.05);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .project-icon {
+    width: 42px; height: 42px;
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #F1F5F9;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .stack-tag {
+    font-size: 0.7rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .certifications { background: var(--ink); }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .cert-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 1.4rem;
+  }
+
+  .cert-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .cert-icon.stanford { background: rgba(140, 21, 21, 0.15); border: 1px solid rgba(140,21,21,0.3); }
+  .cert-icon.alx { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59,130,246,0.2); }
+
+  .cert-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #E2E8F0;
+    margin-bottom: 0.2rem;
+    line-height: 1.4;
+  }
+
+  .cert-issuer {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: linear-gradient(135deg, rgba(15, 36, 68, 0.8), rgba(10, 15, 30, 0.9));
+    border-top: 1px solid rgba(59, 130, 246, 0.15);
+  }
+
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .contact-left .section-title { margin-bottom: 1rem; }
+
+  .contact-left p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #CBD5E1;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--glow); }
+
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .availability-card {
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .avail-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .avail-dot {
+    width: 8px; height: 8px;
+    background: #22C55E;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  .avail-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #86EFAC;
+  }
+
+  .avail-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .avail-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .avail-tag {
+    font-size: 0.75rem;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    color: #86EFAC;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: rgba(0,0,0,0.4);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-stats { gap: 1.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">RT.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Available for remote roles globally</div>
+    <h1>Raphaël Tankeu<br><span>Buguieu.</span></h1>
+    <p class="hero-subtitle">Data Scientist and AI Engineer who builds production machine learning systems end to end — from raw data to deployed applications that real teams depend on.</p>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">8</span>
+        <span class="stat-label">Live AI Apps</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">2+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Languages</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">∞</span>
+        <span class="stat-label">Transactions Analysed</span>
+      </div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="https://github.com/cashlink94" target="_blank" class="btn-primary">View GitHub Portfolio</a>
+      <a href="https://linkedin.com/in/raphaeltankeu" target="_blank" class="btn-secondary">Connect on LinkedIn</a>
+      <a href="mailto:raphaeltankeu6@gmail.com" class="btn-secondary">Get in Touch</a>
+    </div>
+
+    <div class="hero-langs">
+      <span style="color: var(--muted); font-size: 0.8rem;">Languages:</span>
+      <span class="lang-badge">English — Native</span>
+      <span class="lang-badge">French — Native</span>
+      <span class="lang-badge">Spanish — Professional</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Building AI that actually works in production.</h2>
+        <p>I am a Data Scientist and AI Engineer based in Lagos, Nigeria with two years of hands-on experience building and deploying machine learning systems as an independent contractor.</p>
+        <p>At <strong>Flutterwave</strong>, one of Africa's most recognised fintech platforms, I build fraud detection models processing millions of daily transactions across African markets. At <strong>Andela</strong>, I deliver LLM applications, RAG pipelines and agentic workflows for international enterprise clients.</p>
+        <p>Before moving into data science, I spent several years as a <strong>bilingual investment analyst</strong>. That background means every model I build is connected to a real business outcome, not just a benchmark score.</p>
+        <p>I am trilingual in English, French and Spanish, and currently enrolled in a BS Computer Science at the University of the People. Open to remote roles globally. Visa sponsorship required.</p>
+      </div>
+      <div class="about-skills">
+        <div class="section-label" style="margin-bottom: 1.5rem;">Core Skills</div>
+        <div class="skill-row">
+          <div class="skill-header"><span>Python & Data Science</span><span>Expert</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-header"><span>Machine Learning</span><span>Expert</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 92%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-header"><span>LLM & RAG Systems</span><span>Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 88%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-header"><span>Computer Vision</span><span>Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-header"><span>NLP</span><span>Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 83%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-header"><span>Agentic Systems (LangChain)</span><span>Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-inner">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Where I have worked.</h2>
+    <p class="section-desc">Two years of contractor experience delivering production AI and data systems across fintech and enterprise environments.</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-date">Jan 2023 — Present</div>
+          <div class="timeline-company">Flutterwave</div>
+          <span class="timeline-type">Contractor</span>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-title">Data Scientist</div>
+          <div class="timeline-context">Africa's leading fintech platform, processing billions in payments across 34 countries.</div>
+          <ul class="timeline-bullets">
+            <li>Builds and maintains real-time fraud detection ML models across high-volume transaction datasets spanning multiple African markets, contributing to measurable reductions in fraud exposure.</li>
+            <li>Designed and deployed risk scoring pipelines processing millions of daily payment events using Python, Scikit-learn and Pandas — automated flagging with no manual intervention at scale.</li>
+            <li>Developed customer behaviour models and transaction pattern analytics informing senior stakeholder and product decisions across multiple markets.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-date">Aug 2024 — Present</div>
+          <div class="timeline-company">Andela</div>
+          <span class="timeline-type">Contractor</span>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-title">AI Engineer</div>
+          <div class="timeline-context">Global talent platform connecting African engineers with international enterprise clients.</div>
+          <ul class="timeline-bullets">
+            <li>Architected and shipped production-ready LLM, RAG and agentic AI systems for enterprise clients, replacing manual workflows with intelligent automation.</li>
+            <li>Built context-aware intelligent search applications by integrating vector databases with knowledge-grounded LLM architectures.</li>
+            <li>Contributed to end-to-end AI deployment pipelines including workflow design, model evaluation, explainability frameworks and post-launch monitoring.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-date">Feb 2020 — Dec 2022</div>
+          <div class="timeline-company">DataCore Analytics</div>
+          <span class="timeline-type">Contractor</span>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-title">Data Scientist</div>
+          <div class="timeline-context">Data science consultancy serving finance and retail clients.</div>
+          <ul class="timeline-bullets">
+            <li>Delivered end-to-end data science engagements covering predictive analytics, statistical modelling, NLP and business intelligence across finance and retail.</li>
+            <li>Built time-series forecasting models (ARIMA) achieving RMSE of 3,780 on a 30-day prediction horizon for a major retail client.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-date">Aug 2021 — Mar 2023</div>
+          <div class="timeline-company">PAC Capital Ltd.</div>
+          <span class="timeline-type">Full-time</span>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-title">Bilingual Investment Analyst</div>
+          <div class="timeline-context">Investment research and advisory firm, English and French-speaking African markets.</div>
+          <ul class="timeline-bullets">
+            <li>Analysed financial and operational data to support investment research and portfolio decisions across a multi-market client base.</li>
+            <li>Primary communication bridge between English and French-speaking stakeholders — this business context now shapes every data product built.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-inner">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">8 live AI applications.</h2>
+    <p class="section-desc">Every project is deployed, publicly accessible and reproducible. Not notebooks — working systems with real interfaces.</p>
+
+    <div class="projects-grid">
+
+      <a href="https://github.com/cashlink94/inspectai" target="_blank" class="project-card">
+        <div class="project-icon">🔍</div>
+        <div class="project-name">InspectAI</div>
+        <div class="project-desc">Steel surface defect detection. Draws segmentation masks and bounding boxes. Full end-to-end CNN deployment on industrial data.</div>
+        <div class="project-stack">
+          <span class="stack-tag">TensorFlow</span>
+          <span class="stack-tag">OpenCV</span>
+          <span class="stack-tag">CNNs</span>
+          <span class="stack-tag">Streamlit</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/cashlink94/velora-ai" target="_blank" class="project-card">
+        <div class="project-icon">💬</div>
+        <div class="project-name">Velora AI</div>
+        <div class="project-desc">Sentiment analysis platform with word-level explainability. Classifies customer sentiment and highlights the exact words driving each prediction.</div>
+        <div class="project-stack">
+          <span class="stack-tag">NLP</span>
+          <span class="stack-tag">TF-IDF</span>
+          <span class="stack-tag">XAI</span>
+          <span class="stack-tag">Streamlit</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/cashlink94/employee-retention-intelligence-system" target="_blank" class="project-card">
+        <div class="project-icon">📊</div>
+        <div class="project-name">Employee Retention Intelligence</div>
+        <div class="project-desc">Predictive HR analytics platform modelling attrition risk with interactive dashboards for non-technical HR decision-makers.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Scikit-learn</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">Streamlit</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/cashlink94/customer-segmentation-app" target="_blank" class="project-card">
+        <div class="project-icon">👥</div>
+        <div class="project-name">Customer Segmentation Dashboard</div>
+        <div class="project-desc">Clusters customers into actionable segments — VIP, High Spenders, Cash Advance, Low Activity — with PCA visualisation.</div>
+        <div class="project-stack">
+          <span class="stack-tag">KMeans</span>
+          <span class="stack-tag">PCA</span>
+          <span class="stack-tag">Scikit-learn</span>
+          <span class="stack-tag">Streamlit</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/cashlink94/chest-xray-ai" target="_blank" class="project-card">
+        <div class="project-icon">🫁</div>
+        <div class="project-name">Chest X-Ray AI</div>
+        <div class="project-desc">Medical imaging classification system. Detects anomalies in chest X-rays using deep learning — industrial CV applied to healthcare.</div>
+        <div class="project-stack">
+          <span class="stack-tag">TensorFlow</span>
+          <span class="stack-tag">OpenCV</span>
+          <span class="stack-tag">Streamlit</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/cashlink94/Sales-Forecasting-Portfolio" target="_blank" class="project-card">
+        <div class="project-icon">📈</div>
+        <div class="project-name">Sales Forecasting System</div>
+        <div class="project-desc">ARIMA-based 30-day sales forecasting with confidence intervals. RMSE of 3,780 on live retail data. Informs inventory and procurement.</div>
+        <div class="project-stack">
+          <span class="stack-tag">ARIMA</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Streamlit</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certifications">
+  <div class="section-inner">
+    <div class="section-label">Certifications</div>
+    <h2 class="section-title">Formal credentials.</h2>
+    <p class="section-desc">Stanford University and ALX Academy certifications alongside a BS Computer Science in progress at the University of the People.</p>
+
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon stanford">🎓</div>
+        <div>
+          <div class="cert-name">Data-Driven Healthcare in Precision Medicine</div>
+          <div class="cert-issuer">Stanford University</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon stanford">🎓</div>
+        <div>
+          <div class="cert-name">AI Applications in Medicine</div>
+          <div class="cert-issuer">Stanford University</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon stanford">🎓</div>
+        <div>
+          <div class="cert-name">Bioinformatics and Computational Biology</div>
+          <div class="cert-issuer">Stanford University</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon alx">⚡</div>
+        <div>
+          <div class="cert-name">Data Science and Software Engineering</div>
+          <div class="cert-issuer">ALX Academy · 2022–2024</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon alx">⚡</div>
+        <div>
+          <div class="cert-name">AI Engineering: Applied LLMs, Agentic Systems & RAG</div>
+          <div class="cert-issuer">ALX Academy · 2024–Present</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon alx">🏛️</div>
+        <div>
+          <div class="cert-name">BS Computer Science (In Progress)</div>
+          <div class="cert-issuer">University of the People · Accredited American University · 2026–Present</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Let's work together.</h2>
+      <p>I am actively looking for remote Data Scientist and AI Engineer roles. Open to relocation. Visa sponsorship required. If you are hiring or know someone who is, I would love to connect.</p>
+      <div class="contact-links">
+        <a href="mailto:raphaeltankeu6@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉️</div>
+          raphaeltankeu6@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/raphaeltankeu" target="_blank" class="contact-link">
+          <div class="contact-link-icon">💼</div>
+          linkedin.com/in/raphaeltankeu
+        </a>
+        <a href="https://github.com/cashlink94" target="_blank" class="contact-link">
+          <div class="contact-link-icon">⚙️</div>
+          github.com/cashlink94
+        </a>
+        <a href="https://raphaeltankeu6.wixsite.com/raphael-tankeu-bugui" target="_blank" class="contact-link">
+          <div class="contact-link-icon">🌐</div>
+          raphaeltankeu6.wixsite.com/raphael-tankeu-bugui
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="availability-card">
+        <div class="avail-header">
+          <div class="avail-dot"></div>
+          <div class="avail-title">Available for opportunities</div>
+        </div>
+        <div class="avail-desc">
+          Actively seeking remote Data Scientist and AI Engineer roles globally. Open to relocation with visa sponsorship. Can start within 4 to 6 weeks of an offer.
+        </div>
+        <div class="avail-tags">
+          <span class="avail-tag">Remote</span>
+          <span class="avail-tag">Canada</span>
+          <span class="avail-tag">USA</span>
+          <span class="avail-tag">UK</span>
+          <span class="avail-tag">Australia</span>
+          <span class="avail-tag">EU</span>
+          <span class="avail-tag">Visa Sponsorship</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Raphaël Tankeu Buguieu</span>
+  <span>Data Scientist · AI Engineer · Lagos, Nigeria</span>
+</footer>
+
+</body>
+</html>
